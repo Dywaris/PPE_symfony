@@ -1,0 +1,17 @@
+{% extends "LgmPremierBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - Admin {% endblock %}
+{% block contenu %} Page d'administration
+<br />Liste des contacts
+{% if not listeContacts is empty %}
+{{ form_start(form)}}
+<table>
+<tr><th>Email</th><th>Titre</th></tr>
+{% for key,value in listeUtilisateur %}
+<tr><td><a href="{{ path('lgm_premier_modif',{'id':value.id})}}">{{ value.email }}</a></td><td>{{ value.titre }}</td><td><input type="checkbox" name="cocher[]" value="{{ value.id }}"/></td></tr>
+{% endfor %}
+</table>
+{{ form_end(form)}}
+{% else %}
+Aucun contact à afficher
+{% endif %}
+{% endblock %}

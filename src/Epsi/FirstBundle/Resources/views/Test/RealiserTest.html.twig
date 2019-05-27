@@ -1,0 +1,47 @@
+{% extends "EpsiFirstBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - test {% endblock %}
+{% block contenu %}
+    <section class="section-page-top set-bg">
+        <img class="set-bg" src="{{asset('bundles/epsifirst/images/page-top-bg.jpg')}}" alt="">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+        <div class="container text-white">
+            <h3>Test</h3>
+        </div>
+    </section>
+    {% if not MotTest is empty %}
+        <div class="container" >
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1"><div class="panel panel-default panel-table">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">Tests</h3>
+                                </div>
+
+                            </div>
+                        </div>
+                        <form  method="post" class="contact-form">
+                        {% for key,value in MotTest %}
+
+                            
+                        {{ value.Libelle }}<input type="text" id={{key}} name={{key}}> </br>
+                            
+
+
+                        {% endfor %}
+                        <input type="submit" value="Valider" />
+                        </form>
+
+                    </div>
+                </div>
+            </div></div></div>
+
+{% else %}
+    Aucun thème à afficher
+{% endif %}    
+
+{% endblock %}

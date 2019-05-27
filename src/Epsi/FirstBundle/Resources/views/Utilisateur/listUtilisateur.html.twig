@@ -1,0 +1,89 @@
+{% extends "EpsiFirstBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - Utilisateur {% endblock %}
+{% block contenu %}
+    <section class="section-page-top set-bg">
+        <img class="set-bg" src="{{asset('bundles/epsifirst/images/newslatter-bg.jpg')}}" alt="">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+        <div class="container text-white">
+            <h3></h3>
+        </div>
+    </section>
+    {% if not listeUtilisateur is empty %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-1"><div class="panel panel-default panel-table">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">Liste des Utilisateurs</h3>
+                                </div>
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <div class="col col-xs-6 text-right">
+                                    <form  method="POST" action="{{ path('epsi_first_utilisateur')}}">
+                                        <input class="site-btn" type="submit" name="Ok" value="Ajouter un utilisateur" >
+                                    </form>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                        <th><em class="fa fa-cog"></em></th>
+                                        {% endif %}
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Username</th>
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Adresse</th>
+                                        <th>Abonnement</th>
+                                        <th>Entreprise</th>
+                                    </tr>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                        {% for key,value in listeUtilisateur %}
+                                            {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                            <td align="center">
+                                                <a class="btn btn-default" href ="{{ path('epsi_first_modifUtilisateur',{'id':value.id})}}"><em class="fa fa-pencil"></em></a>
+                                                <a class="btn btn-danger" href ="{{ path('epsi_first_suppressionUtilisateur',{'id':value.id})}}"><em class="fa fa-trash"></em></a>                                    
+                                            </td>
+                                            {% endif %}
+                                            <td>{{ value.nom }}</td>
+                                            <td>{{ value.prenom }}</td>
+                                            <td>{{ value.username }}</td>
+                                            <td>{{ value.codepostal }}</td>
+                                            <td>{{ value.ville }}</td>
+                                            <td>{{ value.adresse }}</td>
+                                            <td>{{ value.abonnement.type }}</td>
+                                            <td>{{ value.entreprise.nom }}</td>
+
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div></div></div>
+            {% else %}
+                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <div class="col col-xs-6 text-right">
+                                    <form  method="POST" action="{{ path('epsi_first_utilisateur')}}">
+                                        <input class="site-btn" type="submit" name="Ok" value="Ajouter un utilisateur" >
+                                    </form>
+                                </div>
+                                {% endif %}
+        Aucune Utilisateur à afficher
+    {% endif %}    
+
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "EpsiFirstBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - Liste de mot d'un Utilisateur {% endblock %}
+{% block contenu %}
+    <section class="section-page-top set-bg">
+        <img class="set-bg" src="{{asset('bundles/epsifirst/images/page-top-bg.jpg')}}" alt="">
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <!------ Include the above in your HEAD tag ---------->
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>
+        <div class="container text-white">
+            <h3>Utilisateur</h3>
+        </div>
+    </section>
+    {% if not listePossede is empty %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-1"><div class="panel panel-default panel-table">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col col-xs-6">
+                                    <h3 class="panel-title">Liste des utilisateurs qui possèdent une liste de mot</h3>
+                                </div>
+                                {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <div class="col col-xs-6 text-right">
+                                    <form  method="POST" action="{{ path('epsi_first_possede')}}">
+                                        <input class="site-btn" type="submit" name="Ok" value="Ajouter une liste de mot à un utilisateur" >
+                                    </form>
+                                </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped table-bordered table-list">
+                                <thead>
+                                    <tr>
+                                        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                        <th><em class="fa fa-cog"></em></th>
+                                        {% endif %}
+                                        <th>Nom utilisateur</th>
+                                        <th>Prénom utilisateur</th>
+                                        <th>Login utilisateur</th>
+                                        <th>Liste de mot</th>
+                                    </tr>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <tr>
+
+                                        {% for key,value in listePossede %}
+                                            {% if is_granted('ROLE_SUPER_ADMIN') %} 
+                                            <td align="center">
+                                                <a class="btn btn-default" href ="{{ path('epsi_first_modifPossede',{'id':value.id})}}"><em class="fa fa-pencil"></em></a>
+                                                <a class="btn btn-danger" href ="{{ path('epsi_first_suppressionPossede',{'id':value.id})}}"><em class="fa fa-trash"></em></a>                                    
+                                            </td> 
+                                            {% endif %}
+                                            <td>{{ value.utilisateur.Nom }}</td>
+                                            <td>{{ value.utilisateur.Prenom }}</td>
+                                            <td>{{ value.utilisateur.username }}</td>
+                                            <td>{{ value.listeMot.Libelle }}</td>
+                                        </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div></div></div>
+            {% else %}
+        Aucune Utilisateur à afficher
+        {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                <div class="col col-xs-6 text-right">
+                                    <form  method="POST" action="{{ path('epsi_first_possede')}}">
+                                        <input class="site-btn" type="submit" name="Ok" value="Ajouter une liste de mot à un utilisateur" >
+                                    </form>
+                                </div>
+                                {% endif %}
+    {% endif %}    
+
+{% endblock %}

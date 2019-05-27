@@ -1,0 +1,37 @@
+epsi_first:
+    resource: "@EpsiFirstBundle/Resources/config/routing.yml"
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+themes:
+    type: rest
+    resource: Epsi\FirstBundle\Controller\ThemeController
+
+entreprises:
+    type: rest
+    resource: Epsi\FirstBundle\Controller\EntrepriseController
+
+utilisateurs:
+    type: rest
+    resource: Epsi\FirstBundle\Controller\UtilisateurController
+
+abonnements:
+    type: rest
+    resource: Epsi\FirstBundle\Controller\AbonnementController
+    
+categories:
+    type: rest
+    resource: Epsi\FirstBundle\Controller\CategorieController
+
+mots:
+    type: rest
+    resource: Epsi\FirstBundle\Controller\MotController
+
+
+nelmio-api-doc:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix: /
+    

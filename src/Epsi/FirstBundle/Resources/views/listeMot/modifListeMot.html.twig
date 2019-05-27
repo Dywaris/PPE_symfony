@@ -1,0 +1,42 @@
+{# empty Twig template #}
+{% extends "EpsiFirstBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - Listes des mots {% endblock %}
+{% block contenu %} 
+    {% if is_granted('ROLE_SUPER_ADMIN') %} 
+    <section class="section-page-top set-bg">
+        <img class="set-bg" src="{{asset('bundles/epsifirst/images/page-top-bg.jpg')}}" alt="">
+        <div class="container text-white">
+            <h3>Liste des mots</h3>
+        </div>
+    </section>
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 contact-text">
+                    <h3>Mise à jour d'une liste mot</h3>
+                </div>
+                <div class="col-lg-8">
+                    <form method="post" class="contact-form">
+                        {{form_start(form)}}
+                        <div class="row">
+                            <div class="col-md-12">
+                                {{ form_row(form.Libelle) }}
+                            </div>
+                            <div class="col-md-12">
+                                {{ form_row(form.theme) }}
+                            </div>
+                            <div class="col-md-12">
+                                {{ form_row(form.Ajouter,{'attr': {'class':'site-btn'}}) }}
+                            </div>
+                            {{message}}
+
+
+                        </div>
+                        {{ form_end(form)}}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endif %}
+{% endblock %}

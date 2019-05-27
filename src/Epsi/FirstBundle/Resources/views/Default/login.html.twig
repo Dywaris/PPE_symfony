@@ -1,0 +1,48 @@
+{# empty Twig template #}
+{% extends "EpsiFirstBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - Connexion {% endblock %}
+{% block contenu %} 
+    <section class="section-page-top set-bg">
+        <img class="set-bg" src="{{asset('bundles/epsifirst/images/page-top-bg.jpg')}}" alt="">
+        <div class="container text-white">
+            <h3>Se connecter</h3>
+        </div>
+    {% if error %}
+        <div class="alert alert-danger">Connexion refusé</div>
+    {% endif %}
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div text-align="center" class="container login-container">
+            <div class="row">
+                <div class="col-md-6 login-form-1">
+                    <h3>Se connecter</h3>
+                    <form action="{{ path('login_check') }}" method="post">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Votre nom de compte *" id="username" name="_username" value="{{ last_username }}"  />
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control" placeholder="Votre mot de passe *" value="" id="password" name="_password"  />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Connexion" />
+                        </div>
+                    </form> 
+                </div>
+                <div class="col-md-6 login-form-1">
+                    <h3>S'inscrire</h3>
+                    <form action="{{ path('inscription') }}" method="post">
+                        <h3>Si vous n'etes pas encore inscrit c'est le moment dans profiter ! </h3>
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Inscription" />
+                        </div>
+                        </form>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

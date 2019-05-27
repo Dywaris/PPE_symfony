@@ -1,0 +1,205 @@
+epsi_first_homepage:
+    path:     /
+    defaults: { _controller: EpsiFirstBundle:Default:index }
+
+# utilisateur
+epsi_first_utilisateur:
+    path:     /utilisateur
+    defaults: { _controller: EpsiFirstBundle:Utilisateur:utilisateur }
+    
+epsi_first_listUtilisateur:
+    path:     /listUtilisateur
+    defaults: { _controller: EpsiFirstBundle:Utilisateur:view }
+
+epsi_first_suppressionUtilisateur:
+    path:     /suppresionUtilisateur/{id}
+    defaults: { _controller: EpsiFirstBundle:Utilisateur:suppression }
+
+epsi_first_modifUtilisateur:
+    path:     /modifUtilisateur/{id}
+    defaults: { _controller: EpsiFirstBundle:Utilisateur:modif }
+
+# profil
+epsi_first_listProfil:
+    path:     /listProfil
+    defaults: { _controller: EpsiFirstBundle:Profil:view }
+
+epsi_first_suppressionProfil:
+    path:     /suppresionProfil/{id}
+    defaults: { _controller: EpsiFirstBundle:Profil:suppression }
+
+# login
+login: 
+    path:     /login
+    defaults: { _controller: EpsiFirstBundle:Utilisateur:login }
+
+login_check:
+    path:     /login_check
+    
+logout:
+    path:     /logout
+
+# Inscription
+inscription: 
+    path:     /inscription
+    defaults: { _controller: EpsiFirstBundle:Inscription:inscription }
+
+# Admin
+epsi_first_admin:
+    path:     /admin
+    defaults: { _controller: EpsiFirstBundle:Admin:admin }
+
+# theme
+epsi_first_theme:
+    path:     /theme
+    defaults: { _controller: EpsiFirstBundle:Theme:theme }
+
+epsi_first_modifTheme:
+    path:   /modifTheme/{id}
+    defaults: {_controller: EpsiFirstBundle:Theme:modification }
+ 
+epsi_first_supressionTheme:
+    path:   /supressionTheme/{id}
+    defaults: {_controller: EpsiFirstBundle:Theme:supression }
+
+epsi_first_listTheme:
+    path:     /listTheme
+    defaults: { _controller: EpsiFirstBundle:Theme:view }
+
+epsi_first_listTestByTheme:
+    path:   /listTest/{id}
+    defaults: {_controller: EpsiFirstBundle:Theme:viewTestbyTheme }
+
+# entreprise            
+epsi_first_entreprise:
+    path:     /entreprise
+    defaults: { _controller: EpsiFirstBundle:Entreprise:entreprise }
+
+epsi_first_listEntreprise:
+    path:     /listEntreprise
+    defaults: { _controller: EpsiFirstBundle:Entreprise:entrepriseview }
+
+epsi_first_modifEntreprise:
+    path:   /modifEntreprise/{id}
+    defaults: {_controller: EpsiFirstBundle:Entreprise:modification }
+
+epsi_first_suppressionEntreprise:
+    path:   /suppressionEntreprise/{id}
+    defaults: {_controller: EpsiFirstBundle:Entreprise:suppression }
+
+# mot
+epsi_first_mot:
+    path:     /mot
+    defaults: { _controller: EpsiFirstBundle:Mot:mot }
+
+epsi_first_listMot:
+    path:     /listMot
+    defaults: { _controller: EpsiFirstBundle:Mot:view }
+    
+epsi_first_modifMot:
+    path:   /modifMot/{id}
+    defaults: {_controller: EpsiFirstBundle:Mot:modif }
+
+epsi_first_suppressionMot:
+    path:   /suppressionMot/{id}
+    defaults: {_controller: EpsiFirstBundle:Mot:suppression }
+    
+# catégorie
+epsi_first_categorie:
+    path:     /categorie
+    defaults: { _controller: EpsiFirstBundle:Categorie:categorie }
+
+epsi_first_listCategorie:
+    path:     /listCategorie
+    defaults: { _controller: EpsiFirstBundle:Categorie:view }
+
+epsi_first_modifCategorie:
+    path:     /modifCategorie/{id}
+    defaults: { _controller: EpsiFirstBundle:Categorie:modif }
+    
+epsi_first_suppressionCategorie:
+    path:   /suppressionCategorie/{id}
+    defaults: {_controller: EpsiFirstBundle:Categorie:suppression }
+
+# abonnement    
+epsi_first_abonnement:
+    path:     /abonnement
+    defaults: { _controller: EpsiFirstBundle:Abonnement:abonnement }
+    
+epsi_first_listAbonnement:
+    path:     /listAbonnement
+    defaults: { _controller: EpsiFirstBundle:Abonnement:abonnementview }
+    
+epsi_first_modifAbonnement: 
+    path:     /modifAbonnement/{id}
+    defaults: { _controller: EpsiFirstBundle:Abonnement:modification }
+    
+epsi_first_suppressionAbonnement: 
+    path:     /suppressionAbonnement/{id}
+    defaults: { _controller: EpsiFirstBundle:Abonnement:suppression }    
+#Test
+epsi_first_ajoutTest:
+    path:   /ajoutTest
+    defaults: { _controller: EpsiFirstBundle:Test:AjoutTest }
+
+epsi_first_listTest:
+    path:   /listTest
+    defaults: { _controller: EpsiFirstBundle:Test:view }
+
+epsi_first_supressionTest:
+    path:   /supressionTest/{id}
+    defaults: { _controller: EpsiFirstBundle:Test:supression }
+
+epsi_first_modifTest:
+    path:   /modificationTest/{id}
+    defaults: { _controller: EpsiFirstBundle:Test:modification }
+    
+epsi_first_realiserTest:
+    path: /realiserTest/{id}
+    defaults: {_controller: EpsiFirstBundle:Test:startTest }
+
+# Test & Utilisateur
+epsi_first_listTestUtilisateur:
+    path:   /listTestUtilisateur
+    defaults: {_controller: EpsiFirstBundle:TestUtilisateur:view }
+    
+epsi_first_AjoutTestUtilisateur:
+    path:   /ajoutTestUtilisateur
+    defaults: {_controller: EpsiFirstBundle:TestUtilisateur:AjoutTestUtilisateur }
+
+epsi_first_suppressionTestUtilisateur:
+    path:   /suppressionTestUtilisateur/{id}
+    defaults: {_controller: EpsiFirstBundle:TestUtilisateur:suppression }
+
+epsi_first_modifTestUtilisateur:
+    path:   /modificationTestUtilisateur/{id}
+    defaults: {_controller: EpsiFirstBundle:TestUtilisateur:modification }
+    
+    
+# Possede
+epsi_first_possede:
+    path:     /possede
+    defaults: { _controller: EpsiFirstBundle:Possede:possede }
+    
+epsi_first_listPossede:
+    path:     /listPossede
+    defaults: { _controller: EpsiFirstBundle:Possede:view }
+
+epsi_first_suppressionPossede:
+    path:     /suppresionPossede/{id}
+    defaults: { _controller: EpsiFirstBundle:Possede:suppression }
+
+epsi_first_modifPossede:
+    path:     /modifPossede/{id}
+    defaults: { _controller: EpsiFirstBundle:Possede:modif }
+
+
+# Liste mot
+epsi_first_listeMot:
+    path:     /listeMot
+    defaults: { _controller: EpsiFirstBundle:ListeMot:listeMot }
+    
+epsi_first_modifListeMot:
+    path:   /modifListeMot/{id}
+    defaults: {_controller: EpsiFirstBundle:ListeMot:modif }
+

@@ -1,0 +1,29 @@
+{# empty Twig template #}
+{% extends "EpsiFirstBundle::layout.html.twig" %}
+{% block title %} {{ parent() }} - Accueil {% endblock %}
+{% block contenu %} 
+        <section class="set-bg">
+            <img class="set-bg" src="{{asset('bundles/epsifirst/images/bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7">
+					<div class="container text-white">
+                                        <p> Bonjour, vous trouvez sur le site Innov'Anglais dévellopé par Romain, Simon et Julien dans le cadre de notre BTS SIO</p>
+                                        <p> Ce site est réalisé dans le but d'aider le plus grand nombre à apprendre l'anglais</p>
+                                        <p> Veuillez vous connectez pour voir plus du site</p>
+                                        {% if is_granted('ROLE_SUPER_ADMIN') %} 
+                                            <p>Vous êtes connecté en tant que {{ app.user.username }} (Admin)</p>
+                                            <p>Vous êtes connecté en tant que id : {{ app.user.id }} (Admin)</p>
+                                        {% else %} 
+                                        {% if is_granted('ROLE_USER') %} 
+                                            <p>Vous êtes connecté en tant que {{ app.user.username }} (Utilisateur)</p> 
+                                        {% endif %} 
+                                        {% endif %}
+                                        </div>
+				</div>
+			</div>
+		</div>
+            </div>
+	</section>
+         
+{% endblock %}

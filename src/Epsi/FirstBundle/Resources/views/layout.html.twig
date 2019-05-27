@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{% block title %} Premier Bundle {% endblock %}</title>
+        <link rel="stylesheet" href="{{asset('bundles/epsifirst/css/bootstrap.min.css')}}"type="text/css" />
+        <link rel="stylesheet" href="{{asset('bundles/epsifirst/css/style.css')}}" type="text/css"/>
+        <link rel="shortcut icon" href="{{asset('bundles/epsifirst/images/favicon.ico')}}"/>
+        <link rel="stylesheet" href="{{asset('bundles/epsifirst/css/font-awesome.min.css')}}"/>
+        <link rel="stylesheet" href="{{asset('bundles/epsifirst/css/flaticon.css')}}"/>
+        <link rel="stylesheet" href="{{asset('bundles/epsifirst/css/owl.carousel.css')}}"/>
+
+    </head>
+    <body>
+        {% block body %}
+            <header class="header-section">
+                <div class="header-warp">
+                    <div class="container">
+                        <a href="#" class="site-logo">
+                            <img src="{{asset('bundles/epsifirst/images/logo.png')}}" alt="">
+                        </a>
+                        <div class="user-panel">
+                            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                <li><a href="{{ path('epsi_first_homepage')}}">Accueil</a></li>
+                                <li><a href="{{ path('logout')}}">Se déconnecter</a></li>
+                                <li><a href="{{ path('epsi_first_listProfil')}}">Profil</a></li>
+                            {% else %}
+                                <li><a href="{{ path('epsi_first_homepage')}}">Accueil</a></li>
+                                <li><a href="{{ path('login')}}">Se connecter</a></li>
+                                <li><a href="{{ path('inscription')}}">S'incrire</a></li>
+                            {% endif %}
+                        </div>
+                        <div class="nav-switch">
+                            <i class="fa fa-bars"></i>
+                        </div>
+                        {% block menu %}
+                            <ul class="main-menu">
+                                {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                                
+                                <li><a href="{{ path('epsi_first_listUtilisateur')}}">Utilisateur</a></li>
+                                <li><a href="{{ path('epsi_first_listAbonnement')}}">Abonnement</a></li>
+                                <li><a href="{{ path('epsi_first_listEntreprise')}}">Entreprise</a></li>
+                                <li><a href="{{ path('epsi_first_listTheme')}}">Thème</a></li>
+                                <li><a href="{{ path('epsi_first_listMot')}}">Mot</a></li>
+                                <li><a href="{{ path('epsi_first_listeMot')}}">Liste mot</a></li>
+                                <li><a href="{{ path('epsi_first_listCategorie')}}">Catégorie</a></li>
+                                <li><a href="{{ path('epsi_first_listTest')}}">Test</a></li>
+                                <li><a href="{{ path('epsi_first_listTestUtilisateur')}}">Test&Utilisateur</a></li>
+                                <li><a href="{{ path('epsi_first_listPossede')}}">Possede</a></li>
+                                
+                                {% endif %}
+
+                            </ul>
+                            
+                        {% endblock %}
+                    </div>
+                </div>
+            </header>
+
+
+            {% block contenu %}
+            {% endblock %}
+
+        
+    {% endblock %}
+</body>
+</html>
